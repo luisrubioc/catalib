@@ -1,0 +1,24 @@
+<% provide(:title, 'Create new library') %>
+<h1>New library</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@library) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.label :privacy %>
+      <%= f.text_field :privacy %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

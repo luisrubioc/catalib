@@ -1,0 +1,20 @@
+<% provide(:title, @library.title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @library.title %>
+      </h1>
+      <%= link_to 'Edit', edit_library_path %> 
+      <%= link_to 'Remove', library_path,
+          data: { confirm: 'Are you sure you want to destroy this library?',
+                  :method => :delete } %>
+    </section>
+    <section>
+        <%= @library.content %>
+    </section>
+    <section>
+        <%= @library.description %>
+    </section>
+  </aside>
+</div>
