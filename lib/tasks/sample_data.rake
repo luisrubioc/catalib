@@ -28,8 +28,8 @@ def make_libraries
 
   50.times do
     title = Faker::Name.name
-    content = 'Books'
+    category = Category.offset(rand(Category.count)).first
     description = Faker::Lorem.sentence(5)
-    users.each { |user| user.libraries.create!(title: title, content: content, description: description) }
+    users.each { |user| user.libraries.create!(title: title, category: category, description: description) }
   end
 end

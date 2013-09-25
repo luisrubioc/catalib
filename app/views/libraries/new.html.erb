@@ -9,8 +9,8 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
 
-      <%= f.label :content %>
-      <%= f.text_field :content %>
+      <%= f.label :category %>
+      <%= f.collection_select :category_id, Category.all, :id , :name %>
 
       <%= f.label :description %>
       <%= f.text_field :description %>

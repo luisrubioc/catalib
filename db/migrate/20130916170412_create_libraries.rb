@@ -3,8 +3,8 @@ class CreateLibraries < ActiveRecord::Migration
     create_table :libraries do |t|
       t.integer :user_id
       t.string :title, :null => false
+      t.integer :category_id
       t.string :description
-      t.string :content
       t.string :privacy
 
       t.timestamps

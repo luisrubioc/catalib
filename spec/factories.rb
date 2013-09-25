@@ -10,9 +10,14 @@ FactoryGirl.define do
     end
   end
 
+  factory :category do
+    name "Books"
+    description "Books category"
+  end 
+
   factory :library do
     title "My first library"
-    content "Comics"
     user
+    category
   end  
 end

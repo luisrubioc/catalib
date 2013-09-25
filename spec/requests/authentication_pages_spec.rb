@@ -53,6 +53,7 @@ describe "Authentication" do
 
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
+      let(:category) { FactoryGirl.create(:category) }
 
       describe "when attempting to visit a protected page" do
         before do
@@ -101,12 +102,12 @@ describe "Authentication" do
         end
 
         describe "submitting to the edit action" do
-          before { patch library_path(FactoryGirl.create(:library)) }
+          before { patch library_path(FactoryGirl.create(:library, user: user, category: category)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
 
         describe "submitting to the destroy action" do
-          before { delete library_path(FactoryGirl.create(:library)) }
+          before { delete library_path(FactoryGirl.create(:library, user: user, category: category)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
       end

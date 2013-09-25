@@ -37,7 +37,8 @@ describe "LibraryPages" do
 
   describe "library page" do
     let(:user) { FactoryGirl.create(:user) }
-    let!(:library) { FactoryGirl.create(:library, user: user, description: 'Description', content: "Books") }
+    let(:category) { FactoryGirl.create(:category) }
+    let!(:library) { FactoryGirl.create(:library, user: user, category: category, description: 'Description') }
 
     before do
       sign_in user
@@ -45,7 +46,7 @@ describe "LibraryPages" do
     end
 
     it { should have_selector('h1', text: library.title) }
-    it { should have_content(library.content) }
+    it { should have_content(library.category.name) }
     it { should have_content(library.description) }
     
     describe "editing library" do

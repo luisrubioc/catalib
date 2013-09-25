@@ -52,8 +52,9 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    let!(:l1) { FactoryGirl.create(:library, user: user, content: "Books") }
-    let!(:l2) { FactoryGirl.create(:library, user: user, content: "Movies") }
+    let(:category) { FactoryGirl.create(:category) }
+    let!(:l1) { FactoryGirl.create(:library, user: user, category: category) }
+    let!(:l2) { FactoryGirl.create(:library, user: user, category: category) }
 
     before { visit user_path(user) }
 
@@ -61,8 +62,8 @@ describe "User pages" do
     it { should have_content(user.name) }
 
     describe "libraries" do
-      it { should have_content(l1.content) }
-      it { should have_content(l2.content) }
+      it { should have_content(l1.category.name) }
+      it { should have_content(l2.category.name) }
       it { should have_content(user.libraries.count) }
     end
   end
