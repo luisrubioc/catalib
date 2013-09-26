@@ -6,9 +6,9 @@ describe "LibraryPages" do
 
   describe "index" do
 
-    user = FactoryGirl.create(:user)
+    let(:user) { FactoryGirl.create(:user) }
 
-    before(:each) do
+    before do
       sign_in user
       visit libraries_path
     end
@@ -18,10 +18,12 @@ describe "LibraryPages" do
 
     describe "pagination" do
 
-      before(:all) { 40.times { FactoryGirl.create(:library, user: user) } }
-      after(:all) do
+      before do
+        20.times { FactoryGirl.create(:library, user: user) }
+        visit libraries_path
+      end
+      after do
         Library.delete_all
-        User.delete_all
       end
 
       it { should have_selector('div.pagination') }
@@ -53,6 +55,14 @@ describe "LibraryPages" do
       before { click_link 'Edit' }
 
       it { should have_selector('h1', text: 'Edit library') }
-    end  
+    end
+
+    describe "editing another user's library" do
+      let(:another_user) { FactoryGirl.create(:user) }
+      before { visit edit_library_path(user.libraries.first) }
+
+      specify { expect(response).to redirect_to(root_url) }
+    end
+
   end
 end

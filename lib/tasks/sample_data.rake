@@ -26,7 +26,7 @@ end
 def make_libraries
   users = User.all(limit: 6)  
 
-  50.times do
+  11.times do
     title = Faker::Name.name
     category = Category.offset(rand(Category.count)).first
     description = Faker::Lorem.sentence(5)
