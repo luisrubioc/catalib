@@ -1,5 +1,5 @@
 <% provide(:title, "Edit library") %> 
-<h1>Edit library</h1>
+<h1><%= t :edit_library %></h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -18,7 +18,7 @@
       <%= f.label :privacy %>
       <%= f.text_field :privacy %>
 
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= f.submit t(:save_changes), class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

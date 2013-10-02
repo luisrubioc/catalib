@@ -9,9 +9,9 @@
     
     <% if current_user.admin? || current_user?(@library.user) %>
       <section>
-        <%= link_to 'Edit', edit_library_path %> 
-        | <%= link_to 'Remove', library_path,
-            data: { confirm: 'Are you sure you want to destroy this library?',
+        <%= link_to t(:edit), edit_library_path %> 
+        | <%= link_to t(:remove), library_path,
+            data: { confirm: t(:are_you_sure),
                     :method => :delete } %>
       </section>
     <% end %>

@@ -1,7 +1,7 @@
 <% provide(:title, t(:about_us)) %>
 <h1><%= t :about_us %></h1>
 <p>
-  <a href="http://catalib.com/">Catalib</a>
+  <a href="<%= AppConfig['app_url'] %>"><%= AppConfig['app_name'] %></a>
   is a home libraries management tool made
   with <a href="http://rubyonrails.org/">Ruby on Rails</a>.
 </p>

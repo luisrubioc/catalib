@@ -19,7 +19,7 @@ class LibrariesController < ApplicationController
   def create
     @library = Library.new(library_params)
     if @library.save
-      flash[:success] = "New library created!"
+      flash[:success] = t :library_created
       redirect_to @library
     else
       render 'new'
@@ -31,7 +31,7 @@ class LibrariesController < ApplicationController
 
   def update
     if @library.update_attributes(library_params)
-      flash[:success] = "Library updated"
+      flash[:success] = t :library_updated
       redirect_to @library
     else
       render 'edit'
@@ -40,7 +40,7 @@ class LibrariesController < ApplicationController
 
   def destroy
     Library.find(params[:id]).destroy
-    flash[:success] = "Library destroyed."
+    flash[:success] = t :library_destroyed
     redirect_to libraries_url
   end
 

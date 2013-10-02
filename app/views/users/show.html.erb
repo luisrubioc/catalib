@@ -10,7 +10,7 @@
   </aside>
   <div class="span8">
     <% if @user.libraries.any? %>
-      <h3>Libraries (<%= @user.libraries.count %>)</h3>
+      <h3><%= t :libraries %> (<%= @user.libraries.count %>)</h3>
       <ol class="libraries">
         <%= render @libraries %>
       </ol>

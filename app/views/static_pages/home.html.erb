@@ -6,7 +6,7 @@
       </section>
     </aside>
     <div class="span8">
-      <h3>Catalib things</h3>
+      <h3><%= AppConfig['app_name'] %></h3>
     </div>
   </div>  
 <% else %>
@@ -19,7 +19,7 @@
       application.
     </h2>
 
-    <%= link_to "Sign up now!", signup_path, 
+    <%= link_to t(:sign_up_now), signup_path, 
                                 class: "btn btn-large btn-primary" %>
   </div>
 

@@ -20,6 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  # Common
+  save_changes: "Save changes"
+  are_you_sure: "Are you sure?"
+  edit: "Edit"
+  remove: "Remove"
+  change: "change"
+  delete: "delete"
+  error: "error"
+
   # Static pages
   hello: "Hello world"
   welcome: "Welcome to Catalib"
@@ -33,30 +42,56 @@ en:
   about_us: "About us"
   contact: "Contact"
   news: "News"
+  by: "by"
 
   # Users
   users: "Users"
   all_users: "All users"
   edit_user: "Edit user"
-
-  # Profile
+  create_user: "Create my account"
   profile: "Profile"
   update_profile: "Update your profile"
+  profile_updated: "Profile updated"
+  profile_destroyed: "User destroyed"
   view_my_profile: "view my profile"
   account: "Account"
   settings: "Settings"
+  confirm_password: "Confirm Password"
+  confirmation: "Confirmation"
 
-  # Misc
-  delete: "delete"
-  are_you_sure: "¿You sure?"
+  # Sessions
+  invalid_login: "Invalid email/password combination"
+
+  # Libraries
+  libraries: "Libraries"
+  my_libraries: "My libraries"
+  create_library: "Create new library"
+  new_library: "New library"
+  edit_library: "Edit library"
+  library_created: "New library created!"
+  library_updated: "Library updated"
+  library_created: "Library destroyed"
 
   # Pagination
   will_paginate:
     previous_label: "Previous"
     next_label: "Next"
 
-  
-  # Directories
-  directories: "Directories"
-  create_directory: "Create"
-  directory_created: "Directory created!"
+  # ActiveRecord:
+  activerecord:
+    attributes:
+      user:
+        name: "Name"
+        email: "Email"
+        password: "Password"
+      library:
+        title: "Title"
+        category: "Category"
+        description: "Description"
+        privacy: "Privacy"
+    errors:
+      models:
+        library:
+          attributes:
+            title:
+              blank: "can't be blank"

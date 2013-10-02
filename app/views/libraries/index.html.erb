@@ -1,6 +1,6 @@
-<% provide(:title, 'Libraries') %>
-<h1>Libraries</h1>
-<%= link_to 'Create new library', new_library_path %> 
+<% provide(:title, t(:libraries)) %>
+<h1><%= t :libraries %></h1>
+<%= link_to t(:create_library), new_library_path %> 
 
 <%= will_paginate %>
 

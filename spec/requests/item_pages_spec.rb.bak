@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "LibraryPages" do
+describe "ItemPages" do
 
   subject { page }
 
@@ -10,11 +10,11 @@ describe "LibraryPages" do
 
     before do
       sign_in user
-      visit libraries_path
+      visit items_path
     end
 
-    it { should have_title(full_title( I18n.t(:libraries) )) }
-    it { should have_selector('h1', text: I18n.t(:libraries) ) }
+    it { should have_title(full_title('Items')) }
+    it { should have_selector('h1', text: 'Items') }
 
     describe "pagination" do
 
@@ -40,13 +40,8 @@ describe "LibraryPages" do
   describe "library page" do
     let(:user) { FactoryGirl.create(:user) }
     let(:category) { FactoryGirl.create(:category) }
-    let(:category) { FactoryGirl.create(:category, 
-                                        name: "Movies", 
-                                        description: "Cinema category") }
-    let!(:library) { FactoryGirl.create(:library, 
-                                        user: user,
-                                        category: category,
-                                        description: "Description") }
+    let(:category) { FactoryGirl.create(:category, name: "Movies", description: "Cinema category") }
+    let!(:library) { FactoryGirl.create(:library, user: user, category: category, description: "Description") }
 
     before do
       sign_in user
@@ -62,16 +57,12 @@ describe "LibraryPages" do
       let(:new_category)    { "Movies" }
       let(:new_description) { "New description" }
       before do
-        click_link I18n.t(:edit)
-        fill_in I18n.t('activerecord.attributes.library.title'),
-                with: new_title
-        select  new_category,
-                from: "library_category_id"
-        fill_in I18n.t('activerecord.attributes.library.description'),
-                with: new_description
-        fill_in I18n.t('activerecord.attributes.library.privacy'),
-                with: "foobar"
-        click_button I18n.t(:save_changes)
+        click_link 'Edit'
+        fill_in "Title",        with: new_title
+        select  new_category,   from: "library_category_id"
+        fill_in "Description",  with: new_description
+        fill_in "Privacy",      with: "foobar"
+        click_button "Save changes"
       end
 
       specify { expect(library.reload.title).to  eq new_title }
@@ -86,7 +77,7 @@ describe "LibraryPages" do
         visit edit_library_path(library)
       end
 
-      it { should have_selector('h3', text: AppConfig['app_name']) }
+      it { should have_selector('h3', text: "Catalib things") }
     end
 
     describe "submitting requests as another user" do

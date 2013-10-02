@@ -4,7 +4,9 @@ describe Library do
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
   before do
-    @library = Library.new(user_id: user.id, title: "Library test", category_id: category.id)
+    @library = Library.new(user_id: user.id, 
+                           title: "Library test", 
+                           category_id: category.id)
   end
   
   subject { @library }

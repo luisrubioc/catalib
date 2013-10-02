@@ -1,6 +1,7 @@
 defaults: &defaults
   app_name: Catalib
   app_url: http://catalib.com/
+  app_author: Luis Rubio
 
 development:
   <<: *defaults
