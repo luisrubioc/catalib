@@ -40,11 +40,12 @@ describe "LibraryPages" do
   describe "library page" do
     let(:user) { FactoryGirl.create(:user) }
     let(:category) { FactoryGirl.create(:category) }
-    let!(:library) { FactoryGirl.create(:library, user: user, category: category, description: 'Description') }
+    let(:category) { FactoryGirl.create(:category, name: "Movies", description: "Cinema category") }
+    let!(:library) { FactoryGirl.create(:library, user: user, category: category, description: "Description") }
 
     before do
       sign_in user
-      visit library_path(user.libraries.first)
+      visit library_path(library.id)
     end
 
     it { should have_selector('h1', text: library.title) }
@@ -52,17 +53,46 @@ describe "LibraryPages" do
     it { should have_content(library.description) }
     
     describe "editing library" do
-      before { click_link 'Edit' }
+      let(:new_title)       { "New title" }
+      let(:new_category)    { "Movies" }
+      let(:new_description) { "New description" }
+      before do
+        click_link 'Edit'
+        fill_in "Title",        with: new_title
+        select  new_category,        from: "library_category_id"
+        fill_in "Description",  with: new_description
+        #fill_in "Privacy",      with: "foobar"
+        click_button "Save changes"
+      end
 
-      it { should have_selector('h1', text: 'Edit library') }
+      specify { expect(library.reload.title).to  eq new_title }
+      specify { expect(library.reload.category.name).to  eq new_category }
+      specify { expect(library.reload.description).to  eq new_description }
     end
 
     describe "editing another user's library" do
       let(:another_user) { FactoryGirl.create(:user) }
-      before { visit edit_library_path(user.libraries.first) }
+      before do
+        sign_in another_user
+        visit edit_library_path(library)
+      end
 
-      specify { expect(response).to redirect_to(root_url) }
+      it { should have_selector('h3', text: "Catalib things") }
     end
 
+    describe "submitting requests as another user" do
+      let(:another_user) { FactoryGirl.create(:user) }
+      before { sign_in another_user, no_capybara: true }
+
+      describe "submitting a PATCH request to the Libraries#update action" do
+        before { patch library_path(library) }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+
+      describe "submitting a DELETE request to the Libraries#destroy action" do
+        before { delete library_path(library) }
+        specify { expect(response).to redirect_to(root_url) }
+      end     
+    end
   end
 end

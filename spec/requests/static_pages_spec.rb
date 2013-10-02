@@ -30,8 +30,8 @@ describe "Static pages" do
   describe "About page" do
     before { visit about_path }
 
-    it { should have_content('About') }
-    it { should have_title(full_title('About Us')) }
+    it { should have_content(I18n.t(:about_us)) }
+    it { should have_title(full_title(I18n.t(:about_us))) }
   end
 
   describe "Contact page" do
