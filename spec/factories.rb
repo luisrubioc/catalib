@@ -16,8 +16,14 @@ FactoryGirl.define do
   end 
 
   factory :library do
-    title "My first library"
+    title "My library"
     user
     category
+  end 
+
+  factory :item do
+    title "My item"
+    library
+    status "not begun"
   end  
 end

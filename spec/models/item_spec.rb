@@ -43,13 +43,18 @@ describe Item do
     it { should_not be_valid }
   end
 
+  describe "with status is not present" do
+    before { @item.status = nil }
+    it { should_not be_valid }
+  end
+
   describe "with not allowed status" do
     before { @item.status = "fake_status" }
     it { should_not be_valid }
   end
 
   describe "with lent value that is too long" do
-    before { @item.title = "a" * 31 }
+    before { @item.lent = "a" * 31 }
     it { should_not be_valid }
   end
 

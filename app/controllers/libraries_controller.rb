@@ -10,6 +10,7 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+    @items = @library.items.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -47,8 +48,7 @@ class LibrariesController < ApplicationController
   private
 
     def library_params
-      params.require(:library).permit(:title, :description, :content,
-                                      :privacy)
+      params.require(:library).permit(:title, :description, :content, :privacy)
     end
 
     # Before filters

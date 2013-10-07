@@ -23,4 +23,13 @@
       <%= @library.description %>
     </section>
   </aside>
+  <div class="span8">
+    <% if @library.items.any? %>
+      <h3><%= t :items %> (<%= @library.items.count %>)</h3>
+      <ol class="items">
+        <%= render @items %>
+      </ol>
+      <%= will_paginate @items %>
+    <% end %>
+  </div>
 </div>

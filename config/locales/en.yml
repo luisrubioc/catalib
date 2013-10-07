@@ -72,6 +72,9 @@ en:
   library_updated: "Library updated"
   library_created: "Library destroyed"
 
+  # Items
+  items: "Items"
+
   # Pagination
   will_paginate:
     previous_label: "Previous"

@@ -3,6 +3,8 @@ defaults: &defaults
   app_url: http://catalib.com/
   app_author: Luis Rubio
 
+  valid_item_status: ['not begun', 'in progress', 'completed', 'abandoned']
+
 development:
   <<: *defaults
 

@@ -7,6 +7,7 @@ describe "LibraryPages" do
   describe "index" do
 
     let(:user) { FactoryGirl.create(:user) }
+    let(:category) { FactoryGirl.create(:category) }
 
     before do
       sign_in user
@@ -19,7 +20,7 @@ describe "LibraryPages" do
     describe "pagination" do
 
       before do
-        20.times { FactoryGirl.create(:library, user: user) }
+        20.times { FactoryGirl.create(:library, user: user, category: category) }
         visit libraries_path
       end
       after do
@@ -50,7 +51,7 @@ describe "LibraryPages" do
 
     before do
       sign_in user
-      visit library_path(library.id)
+      visit library_path(library)
     end
 
     it { should have_selector('h1', text: library.title) }

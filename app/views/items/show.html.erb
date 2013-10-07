@@ -1,0 +1,26 @@
+<% provide(:title, @item.title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @item.title %>
+      </h1>
+    </section>
+    
+    <% if current_user.admin? || current_user?(@item.library.user) %>
+      <section>
+        <%= link_to t(:edit), edit_library_path %> 
+        | <%= link_to t(:remove), library_path,
+            data: { confirm: t(:are_you_sure),
+                    :method => :delete } %>
+      </section>
+    <% end %>
+    
+    <section>
+      <%= @item.title %>
+    </section>
+    <section>
+      <%= @item.title %>
+    </section>
+  </aside>
+</div>
