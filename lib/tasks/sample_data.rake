@@ -28,7 +28,7 @@ def make_libraries
   users = User.all(limit: 6)  
 
   11.times do
-    title = Faker::Name.title
+    title = Faker::Commerce.color
     category = Category.offset(rand(Category.count)).first
     description = Faker::Lorem.sentence(5)
     users.each { |user| user.libraries.create!(title: title,
@@ -41,7 +41,7 @@ def make_items
   libraries = Library.all
 
   11.times do
-    title = Faker::Name.title
+    title = Faker::Commerce.product_name
     rating = rand(0..10)
     status = AppConfig['valid_item_status'].sample
     libraries.each { |library| library.items.create!(title: title, 

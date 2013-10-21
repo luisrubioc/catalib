@@ -8,13 +8,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Library.new
+    @item = Item.new
   end
 
   def create
-    @item = Library.new(library_params)
+    @item = Item.new(item_params)
     if @item.save
-      flash[:success] = t :library_created
+      flash[:success] = t :item_created
       redirect_to @item
     else
       render 'new'
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update_attributes(item_params)
-      flash[:success] = t :library_updated
+      flash[:success] = t :item_updated
       redirect_to @item
     else
       render 'edit'
@@ -34,8 +34,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    Library.find(params[:id]).destroy
-    flash[:success] = t :library_destroyed
+    Item.find(params[:id]).destroy
+    flash[:success] = t :item_destroyed
     redirect_to libraries_url
   end
 
@@ -48,8 +48,8 @@ class ItemsController < ApplicationController
     # Before filters
 
     def correct_user
-      @item = current_user.libraries.find_by(id: params[:id])
-      redirect_to root_url if @item.nil?
+      @item = Item.find_by(id: params[:id])
+      redirect_to root_url if @item.library.user != current_user
     end
     
 end

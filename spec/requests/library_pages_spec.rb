@@ -44,7 +44,7 @@ describe "LibraryPages" do
     let(:category) { FactoryGirl.create(:category, 
                                         name: "Movies", 
                                         description: "Cinema category") }
-    let!(:library) { FactoryGirl.create(:library, 
+    let(:library) { FactoryGirl.create(:library, 
                                         user: user,
                                         category: category,
                                         description: "Description") }

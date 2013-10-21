@@ -69,14 +69,14 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: orange;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: orange;
     text-decoration: none;
   }
 }
@@ -147,27 +147,6 @@ aside {
   margin-right: 10px;
 }
 
-.stats {
-  overflow: auto;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $grayLighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: $blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
-
 .user_avatars {
   overflow: auto;
   margin-top: 10px;
@@ -219,7 +198,7 @@ input {
 
 /* libraries and items */
 
-.libraries .items {
+.libraries {
   list-style: none;
   margin: 10px 0 0 0;
 
@@ -228,6 +207,17 @@ input {
     border-top: 1px solid #e8e8e8;
   }
 }
+
+.items {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
 .content {
   display: block;
 }

@@ -9,8 +9,8 @@
     
     <% if current_user.admin? || current_user?(@item.library.user) %>
       <section>
-        <%= link_to t(:edit), edit_library_path %> 
-        | <%= link_to t(:remove), library_path,
+        <%= link_to t(:edit), edit_item_path %> 
+        | <%= link_to t(:remove), item_path,
             data: { confirm: t(:are_you_sure),
                     :method => :delete } %>
       </section>
@@ -20,7 +20,16 @@
       <%= @item.title %>
     </section>
     <section>
-      <%= @item.title %>
+      <%= @item.rating %>
+    </section>
+    <section>
+      <%= @item.status %>
+    </section>
+    <section>
+      <%= @item.lent %>
+    </section>
+    <section>
+      <%= @item.notes %>
     </section>
   </aside>
 </div>

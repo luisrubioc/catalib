@@ -11,17 +11,40 @@
   </div>  
 <% else %>
   <div class="center hero-unit">
-    <h1><%= t :welcome %></h1>
+    <h1><%= t :site_description_1 %> </h1>
 
-    <h2>
-      This is the home page for the
-      <a href="<%= AppConfig['app_url']%>"><%= AppConfig['app_name']%></a>
-      application.
-    </h2>
+    <h2><%= t :site_description_2 %></h2>
 
     <%= link_to t(:sign_up_now), signup_path, 
                                 class: "btn btn-large btn-primary" %>
   </div>
 
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+  <div class="row">
+    <div class="span6">
+     <h4>Subheading</h4>
+      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    </div>
+    <div class="span6">
+      <h4>Subheading</h4>
+      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+     <h4>Subheading</h4>
+      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    </div>
+    <div class="span6">
+      <h4>Subheading</h4>
+      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="span12">
+      <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+    </div>
+  </div>
 <% end %> 

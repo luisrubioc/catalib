@@ -32,6 +32,8 @@ es:
   # Static pages
   hello: "Hola mundo"
   welcome: "Bienvenido a Catalib"
+  site_description_1: "Cataloga tus librerías"
+  site_description_2: "La mejor herramienta de catalogación gratis para tus librerías privadas."
   home: "Inicio"
   help: "Ayuda"
   sign_in: "Iniciar sesión"
@@ -68,12 +70,18 @@ es:
   create_library: "Crear nueva librería"
   new_library: "Nueva librería"
   edit_library: "Editar librería"
-  library_created: "Nueva librería creada!"
+  library_created: "¡Nueva librería creada!"
   library_updated: "Librería actualizada"
-  library_created: "Librería destruida"
+  library_destroyed: "Librería destruida"
 
   # Items
   items: "Items"
+  create_item: "Crear nuevo item"
+  new_item: "Nuevo item"
+  edit_item: "Editar item"
+  item_created: "¡Nuevo item creado!"
+  item_updated: "Item actualizado"
+  item_destroyed: "Item destruido"
 
   # Pagination
   will_paginate:

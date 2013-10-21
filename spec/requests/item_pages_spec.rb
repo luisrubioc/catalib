@@ -24,7 +24,7 @@ describe "ItemPages" do
         Item.delete_all
       end
 
-      it { should have_selector('h3', text: 'Items') }
+      it { should have_selector('h3', text: I18n.t(:items)) }
       it { should have_selector('div.pagination') }
 
       it "should list each item" do
@@ -50,25 +50,32 @@ describe "ItemPages" do
     end
 
     it { should have_selector('h1', text: item.title) }
-    it { should have_content(item.category.name) }
-    it { should have_content(item.description) }
+    it { should have_content(item.rating) }
+    it { should have_content(item.status) }
+    it { should have_content(item.lent) }
+    it { should have_content(item.notes) }
     
     describe "editing item" do
-      let(:new_title)       { "New title" }
-      let(:new_category)    { "Movies" }
-      let(:new_description) { "New description" }
+      let(:new_title)   { "New title" }
+      let(:new_rating)  { 8 }
+      let(:new_status)  { "abandoned" }
+      let(:new_lent)    { "Gorrón" }
+      let(:new_notes)   { Faker::Lorem.sentence(5) }
       before do
         click_link 'Edit'
-        fill_in "Title",        with: new_title
-        select  new_category,   from: "item_category_id"
-        fill_in "Description",  with: new_description
-        fill_in "Privacy",      with: "foobar"
-        click_button "Save changes"
+        fill_in "Title",   with: new_title
+        fill_in "Rating",  with: new_rating
+        fill_in "Status",  with: new_status
+        fill_in "Lent",    with: new_lent
+        fill_in "Notes",   with: new_notes
+        click_button I18n.t(:save_changes)
       end
 
       specify { expect(item.reload.title).to  eq new_title }
-      specify { expect(item.reload.category.name).to  eq new_category }
-      specify { expect(item.reload.description).to  eq new_description }
+      specify { expect(item.reload.rating).to  eq new_rating }
+      specify { expect(item.reload.status).to  eq new_status }
+      specify { expect(item.reload.lent).to  eq new_lent }
+      specify { expect(item.reload.notes).to  eq new_notes }
     end
 
     describe "editing another user's item" do
@@ -78,19 +85,19 @@ describe "ItemPages" do
         visit edit_item_path(item)
       end
 
-      it { should have_selector('h3', text: "Catalib things") }
+      it { should have_selector('h3', text: AppConfig['app_name']) }
     end
 
     describe "submitting requests as another user" do
       let(:another_user) { FactoryGirl.create(:user) }
       before { sign_in another_user, no_capybara: true }
 
-      describe "submitting a PATCH request to the Libraries#update action" do
+      describe "submitting a PATCH request to the Items#update action" do
         before { patch item_path(item) }
         specify { expect(response).to redirect_to(root_url) }
       end
 
-      describe "submitting a DELETE request to the Libraries#destroy action" do
+      describe "submitting a DELETE request to the Items#destroy action" do
         before { delete item_path(item) }
         specify { expect(response).to redirect_to(root_url) }
       end
